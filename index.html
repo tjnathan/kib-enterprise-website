@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIB Enterprise | Movies &amp; Series</title>
+<meta name="description" content="KIB Enterprise Entertainment. New movies and series, plus the classics, loaded onto flash drives and hard drives. Fidelity Mall, Shop 13, Lusaka.">
+<link rel="icon" type="image/png" href="assets/kib-logo.png">
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<header class="nav" id="nav">
+  <a class="nav-brand" href="#top" aria-label="KIB Enterprise home">
+    <img src="assets/kib-logo.png" alt="KIB Enterprise">
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#new">What's New</a>
+    <a href="#trending">Trending</a>
+    <a href="#genres">Genres</a>
+    <a href="#timemachine">Time Machine</a>
+  </nav>
+  <div class="nav-search">
+    <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+    <input id="searchInput" type="search" placeholder="Search movies and series" autocomplete="off" aria-label="Search movies and series">
+  </div>
+</header>
+
+<!-- ── SEARCH OVERLAY ──────────────────────────────────── -->
+<section class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-head">
+    <h2 id="searchTitle">Results</h2>
+    <button class="btn-ghost btn-close" id="searchClose" aria-label="Close search"><i class="ph ph-x"></i> Close</button>
+  </div>
+  <div class="grid" id="searchGrid"></div>
+  <p class="state-msg" id="searchEmpty" hidden>Nothing found. Try another title, or ask us on WhatsApp. We do custom requests.</p>
+</section>
+
+<main id="top">
+
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-backdrop" id="heroBackdrop"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Now Trending</p>
+      <h1 id="heroTitle">&nbsp;</h1>
+      <div class="meta-row" id="heroMeta"></div>
+      <p class="hero-overview" id="heroOverview"></p>
+      <div class="cta-row">
+        <a class="btn-primary" id="heroOrder" href="#" target="_blank" rel="noopener">
+          <i class="ph-fill ph-whatsapp-logo"></i> Order on WhatsApp
+        </a>
+        <button class="btn-ghost" id="heroDetails"><i class="ph ph-info"></i> Details</button>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots" aria-label="Featured titles"></div>
+  </section>
+
+  <!-- ── WHAT'S NEW ────────────────────────────────────── -->
+  <section class="section" id="new">
+    <h2>New in Cinemas</h2>
+    <div class="rail" id="railCinema"></div>
+
+    <h2 class="mt">New on TV</h2>
+    <div class="rail" id="railTV"></div>
+  </section>
+
+  <!-- ── TRENDING ──────────────────────────────────────── -->
+  <section class="section" id="trending">
+    <h2>Trending This Week</h2>
+    <div class="grid" id="gridTrending"></div>
+  </section>
+
+  <!-- ── GENRES ────────────────────────────────────────── -->
+  <section class="section" id="genres">
+    <h2>Browse by Genre</h2>
+    <div class="toggle-row">
+      <div class="seg" role="tablist" aria-label="Media type">
+        <button class="seg-btn active" data-gtype="movie" role="tab">Movies</button>
+        <button class="seg-btn" data-gtype="tv" role="tab">Series</button>
+      </div>
+    </div>
+    <div class="chip-row" id="genreChips"></div>
+    <div class="grid" id="gridGenre"></div>
+    <div class="center"><button class="btn-ghost" id="genreMore">Load more</button></div>
+  </section>
+
+  <!-- ── TIME MACHINE ──────────────────────────────────── -->
+  <section class="section tm" id="timemachine">
+    <h2>Time Machine</h2>
+    <p class="section-sub">The classics, decade by decade.</p>
+    <div class="toggle-row">
+      <div class="chip-row" id="decadeChips"></div>
+      <div class="seg" role="tablist" aria-label="Media type">
+        <button class="seg-btn active" data-ttype="movie" role="tab">Movies</button>
+        <button class="seg-btn" data-ttype="tv" role="tab">Series</button>
+      </div>
+    </div>
+    <div class="grid" id="gridTime"></div>
+    <div class="center"><button class="btn-ghost" id="timeMore">Load more</button></div>
+  </section>
+
+</main>
+
+<!-- ── DETAIL MODAL ────────────────────────────────────── -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-card" id="modalCard">
+    <button class="btn-ghost btn-close modal-close" id="modalClose" aria-label="Close"><i class="ph ph-x"></i></button>
+    <div class="modal-hero" id="modalHero"></div>
+    <div class="modal-body">
+      <img class="modal-poster" id="modalPoster" alt="">
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <div class="meta-row" id="modalMeta"></div>
+        <div class="chip-row small" id="modalGenres"></div>
+        <p class="modal-overview" id="modalOverview"></p>
+        <div class="cast-row" id="modalCast"></div>
+        <div class="modal-actions">
+          <span class="price-tag" id="modalPrice"></span>
+          <a class="btn-primary" id="modalOrder" href="#" target="_blank" rel="noopener">
+            <i class="ph-fill ph-whatsapp-logo"></i> Order on WhatsApp
+          </a>
+          <a class="btn-ghost" id="modalTrailer" href="#" target="_blank" rel="noopener" hidden>
+            <i class="ph-fill ph-play"></i> Trailer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer class="footer">
+  <img src="assets/kib-logo.png" alt="KIB Enterprise" class="footer-logo">
+  <p class="footer-line">Movies and series on flash drives and hard drives. Full franchises, box sets and custom requests. Delivery available.</p>
+  <div class="footer-contact">
+    <span><i class="ph-fill ph-map-pin"></i> Fidelity Mall, Shop 13, Lusaka</span>
+    <span><i class="ph-fill ph-phone"></i> 0977 787680</span>
+  </div>
+  <p class="footer-credit">Movie and series data and images from <a href="https://www.themoviedb.org" target="_blank" rel="noopener">TMDB</a>.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
