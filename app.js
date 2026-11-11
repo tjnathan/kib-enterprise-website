@@ -7,7 +7,7 @@
 const API_KEY  = "efd5a0dc2e09999970b5ba318c2b4e8e";
 const API      = "https://api.themoviedb.org/3";
 const IMG      = "https://image.tmdb.org/t/p";
-const WHATSAPP = "260977787680";
+const WHATSAPP = "260969870360";
 
 const PRICE = { movie: "K15", tv: "K25" };
 
